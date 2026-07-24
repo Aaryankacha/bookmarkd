@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const res = await fetch('/api/auth/me', {
+          const res = await fetch('https://bookmarkd-8wed.onrender.com/api/auth/me', {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const res = await fetch('/api/auth/login', {
+    const res = await fetch('https://bookmarkd-8wed.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (username, email, password) => {
-    const res = await fetch('/api/auth/register', {
+    const res = await fetch('https://bookmarkd-8wed.onrender.com/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, email, password })

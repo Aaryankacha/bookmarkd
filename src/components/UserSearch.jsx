@@ -30,7 +30,7 @@ const UserSearch = () => {
     const delayDebounceFn = setTimeout(async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(`/api/users/search?q=${encodeURIComponent(query)}`);
+        const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/users/search?q=${encodeURIComponent(query)}`);
         if (res.ok) {
           const data = await res.json();
           setUsers(data);

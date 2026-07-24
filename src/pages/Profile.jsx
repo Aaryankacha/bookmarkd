@@ -10,7 +10,7 @@ const Profile = () => {
   const { data: progressList, isLoading } = useQuery({
     queryKey: ['myProgress'],
     queryFn: async () => {
-      const res = await fetch('/api/progress', {
+      const res = await fetch('https://bookmarkd-8wed.onrender.com/api/progress', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (!res.ok) throw new Error('Failed to fetch progress');

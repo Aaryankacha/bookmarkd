@@ -16,7 +16,7 @@ const ClubDetails = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['club', id],
     queryFn: async () => {
-      const res = await fetch(`/api/clubs/${id}`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/clubs/${id}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       if (!res.ok) throw new Error('Failed to fetch club');
@@ -27,7 +27,7 @@ const ClubDetails = () => {
   const { data: discussions } = useQuery({
     queryKey: ['discussions', id],
     queryFn: async () => {
-      const res = await fetch(`/api/clubs/${id}/discussions`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/clubs/${id}/discussions`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       if (!res.ok) throw new Error('Failed to fetch discussions');
@@ -38,7 +38,7 @@ const ClubDetails = () => {
 
   const joinMutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch(`/api/clubs/${id}/join`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/clubs/${id}/join`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -54,7 +54,7 @@ const ClubDetails = () => {
   const [newDiscussionContent, setNewDiscussionContent] = useState('');
   const createDiscussionMutation = useMutation({
     mutationFn: async (discData) => {
-      const res = await fetch(`/api/clubs/${id}/discussions`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/clubs/${id}/discussions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

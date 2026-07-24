@@ -16,7 +16,7 @@ const Clubs = () => {
   const { data: clubs, isLoading } = useQuery({
     queryKey: ['clubs'],
     queryFn: async () => {
-      const res = await fetch('/api/clubs');
+      const res = await fetch('https://bookmarkd-8wed.onrender.com/api/clubs');
       if (!res.ok) throw new Error('Failed to fetch clubs');
       return res.json();
     }
@@ -35,7 +35,7 @@ const Clubs = () => {
 
   const createMutation = useMutation({
     mutationFn: async (clubData) => {
-      const res = await fetch('/api/clubs', {
+      const res = await fetch('https://bookmarkd-8wed.onrender.com/api/clubs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

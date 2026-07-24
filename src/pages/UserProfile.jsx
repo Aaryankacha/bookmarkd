@@ -11,7 +11,7 @@ const UserProfile = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['userProfile', username],
     queryFn: async () => {
-      const res = await fetch(`/api/users/${username}`);
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/users/${username}`);
       if (!res.ok) throw new Error('User not found');
       return res.json();
     }
@@ -20,7 +20,7 @@ const UserProfile = () => {
   const { data: followStats } = useQuery({
     queryKey: ['followStats', data?.user?._id],
     queryFn: async () => {
-      const res = await fetch(`/api/social/follow-stats/${data.user._id}`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/social/follow-stats/${data.user._id}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       if (!res.ok) throw new Error('Failed to fetch follow stats');
@@ -31,7 +31,7 @@ const UserProfile = () => {
 
   const followMutation = useMutation({
     mutationFn: async (action) => {
-      const res = await fetch(`/api/social/${action}/${data.user._id}`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/social/${action}/${data.user._id}`, {
         method: action === 'follow' ? 'POST' : 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -147,7 +147,7 @@ const UserProfile = () => {
                 {data.friendStatus === 'pending_received' && (
                   <button 
                     onClick={async () => {
-                      await fetch(`/api/social/friends/respond/${data.pendingRequestId}`, {
+                      await fetch(`https://bookmarkd-8wed.onrender.com/api/social/friends/respond/${data.pendingRequestId}`, {
                         method: 'POST',
                         headers: { 
                           'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ const UserProfile = () => {
                 {data.friendStatus === 'none' && (
                   <button 
                     onClick={async () => {
-                      await fetch(`/api/social/friends/request/${profileUser._id}`, {
+                      await fetch(`https://bookmarkd-8wed.onrender.com/api/social/friends/request/${profileUser._id}`, {
                         method: 'POST',
                         headers: { Authorization: `Bearer ${token}` }
                       });

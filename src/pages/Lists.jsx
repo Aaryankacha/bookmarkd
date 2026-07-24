@@ -14,7 +14,7 @@ const Lists = () => {
   const { data: lists, isLoading } = useQuery({
     queryKey: ['myLists'],
     queryFn: async () => {
-      const res = await fetch('/api/lists', {
+      const res = await fetch('https://bookmarkd-8wed.onrender.com/api/lists', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (!res.ok) throw new Error('Failed to fetch lists');
@@ -25,7 +25,7 @@ const Lists = () => {
 
   const createList = useMutation({
     mutationFn: async (newList) => {
-      const res = await fetch('/api/lists', {
+      const res = await fetch('https://bookmarkd-8wed.onrender.com/api/lists', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Lists = () => {
 
   const deleteList = useMutation({
     mutationFn: async (id) => {
-      const res = await fetch(`/api/lists/${id}`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/lists/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

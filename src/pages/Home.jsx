@@ -22,7 +22,7 @@ const Home = () => {
     queryFn: async () => {
       const token = localStorage.getItem('token');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const res = await fetch(`/api/social/activity?filter=${feedFilter}`, { headers });
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/social/activity?filter=${feedFilter}`, { headers });
       if (!res.ok) throw new Error('Failed to fetch activity');
       return res.json();
     }

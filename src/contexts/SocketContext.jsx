@@ -11,7 +11,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      const socketInstance = io('/', {
+      const socketInstance = io('https://bookmarkd-8wed.onrender.com', {
         auth: { token },
         reconnection: true,
         reconnectionDelay: 1000,

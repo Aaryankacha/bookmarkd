@@ -29,7 +29,7 @@ const Navbar = ({ onOpenDrawer }) => {
     queryKey: ['notifications'],
     queryFn: async () => {
       if (!token) return [];
-      const res = await fetch('/api/social/notifications', {
+      const res = await fetch('https://bookmarkd-8wed.onrender.com/api/social/notifications', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (!res.ok) throw new Error('Failed to fetch notifications');

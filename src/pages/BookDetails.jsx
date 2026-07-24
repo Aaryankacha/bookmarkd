@@ -32,7 +32,7 @@ const BookDetails = () => {
     queryKey: ['progress', fullId],
     queryFn: async () => {
       if (!token) return null;
-      const res = await fetch('/api/progress', {
+      const res = await fetch('https://bookmarkd-8wed.onrender.com/api/progress', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (!res.ok) throw new Error('Failed to fetch progress');
@@ -45,7 +45,7 @@ const BookDetails = () => {
   const { data: reviews } = useQuery({
     queryKey: ['reviews', id],
     queryFn: async () => {
-      const res = await fetch(`/api/social/reviews/${id}`);
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/social/reviews/${id}`);
       if (!res.ok) throw new Error('Failed to fetch reviews');
       return res.json();
     }
@@ -94,7 +94,7 @@ const BookDetails = () => {
 
   const updateProgress = useMutation({
     mutationFn: async (newStatus) => {
-      const res = await fetch(`/api/progress/${id}`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/progress/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const BookCard = ({ book }) => {
 
   const updateProgress = useMutation({
     mutationFn: async (status) => {
-      const res = await fetch(`/api/progress/${id}`, {
+      const res = await fetch(`https://bookmarkd-8wed.onrender.com/api/progress/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
