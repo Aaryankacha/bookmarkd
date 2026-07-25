@@ -54,10 +54,10 @@ const BookCard = ({ book }) => {
     <motion.div 
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 350, damping: 25 }}
-      className="flex-none w-[180px] group cursor-pointer"
+      className="flex-none w-[140px] md:w-[180px] group cursor-pointer"
       onClick={handleCardClick}
     >
-      <div className="w-full h-[260px] bg-white rounded-2xl overflow-hidden mb-3 relative shadow-md shadow-black/[0.04] border border-black/[0.06] group-hover:border-[#D4A65A]/50 group-hover:shadow-xl group-hover:shadow-[#D4A65A]/15 transition-all duration-500">
+      <div className="w-full h-[200px] md:h-[260px] bg-white rounded-2xl overflow-hidden mb-3 relative shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/[0.06] group-hover:border-[#D4A65A]/40 group-hover:shadow-[0_20px_40px_rgb(212,166,90,0.12)] transition-all duration-500">
         {coverUrl ? (
           <img 
             src={coverUrl} 

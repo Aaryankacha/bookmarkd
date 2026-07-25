@@ -52,8 +52,8 @@ const Search = () => {
   return (
     <div className="min-h-screen bg-[#F8F6F2] pt-24 pb-16 px-4 sm:px-6 lg:px-12 relative overflow-hidden">
       
-      {/* Background ambient lighting */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#D4A65A]/10 blur-[160px] rounded-full pointer-events-none" />
+      {/* Background Editorial Mesh */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#D4A65A]/15 to-transparent blur-[140px] rounded-[100%] pointer-events-none opacity-80" />
 
       <div className="max-w-[1500px] mx-auto space-y-10 relative z-10">
         
@@ -119,16 +119,17 @@ const Search = () => {
         {/* Results / Empty States */}
         {!debouncedQuery ? (
           <motion.div 
-            className="text-center text-[#888888] py-16 bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-black/[0.08] max-w-2xl mx-auto flex flex-col items-center justify-center space-y-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            className="text-center py-20 px-4 bg-gradient-to-b from-white/60 to-white/30 backdrop-blur-md rounded-[28px] border border-dashed border-black/[0.1] shadow-2xs relative overflow-hidden max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
           >
-            <div className="w-14 h-14 rounded-2xl bg-[#D4A65A]/15 flex items-center justify-center text-[#D4A65A]">
-              <BookOpen className="w-7 h-7" />
+            <div className="absolute inset-0 bg-[#D4A65A]/5 blur-3xl opacity-50" />
+            <div className="w-16 h-16 rounded-2xl bg-[#D4A65A]/10 border border-[#D4A65A]/20 flex items-center justify-center text-[#D4A65A] mx-auto mb-5 relative z-10">
+              <BookOpen className="w-8 h-8" />
             </div>
-            <h3 className="font-serif text-xl text-[#1D1D1F] font-semibold">Ready to explore</h3>
-            <p className="text-xs text-[#666666] max-w-md font-sans">
+            <h3 className="font-serif text-2xl text-[#1D1D1F] font-semibold relative z-10">Ready to explore</h3>
+            <p className="text-sm text-[#888888] max-w-md mx-auto font-sans mt-2 relative z-10">
               Type a book title, author, or click a popular tag above to search millions of books on Open Library.
             </p>
           </motion.div>
@@ -157,10 +158,16 @@ const Search = () => {
             </div>
           </motion.div>
         ) : (
-          <div className="text-center text-[#888888] py-16 bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-black/[0.08] max-w-md mx-auto">
-            <p className="font-serif text-lg text-[#1D1D1F]">No books found for &quot;{debouncedQuery}&quot;</p>
-            <p className="text-xs text-[#666666] font-sans mt-1">Try checking for typos or searching with broader keywords.</p>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-16 px-4 bg-gradient-to-b from-white/60 to-white/30 backdrop-blur-md rounded-[28px] border border-dashed border-black/[0.1] shadow-2xs relative overflow-hidden max-w-md mx-auto"
+          >
+            <div className="absolute inset-0 bg-[#D4A65A]/5 blur-3xl opacity-50" />
+            <SearchIcon className="w-8 h-8 text-[#D4A65A]/40 mx-auto mb-4 relative z-10" />
+            <p className="font-serif text-xl text-[#1D1D1F] relative z-10">No books found for &quot;{debouncedQuery}&quot;</p>
+            <p className="text-sm text-[#888888] font-sans mt-2 relative z-10">Try checking for typos or searching with broader keywords.</p>
+          </motion.div>
         )}
 
       </div>

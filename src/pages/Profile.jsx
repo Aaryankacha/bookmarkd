@@ -104,7 +104,7 @@ const Profile = () => {
         <div className="space-y-12">
           
           {/* Currently Reading */}
-          <section className="bg-white/60 backdrop-blur-md p-6 sm:p-8 rounded-[24px] border border-black/[0.05] shadow-xs">
+          <section className="bg-white/60 backdrop-blur-md p-4 sm:p-6 lg:p-8 rounded-[24px] border border-black/[0.05] shadow-xs">
             <div className="flex items-center justify-between mb-6 pb-3 border-b border-black/[0.06]">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-xl bg-[#D4A65A]/15 flex items-center justify-center text-[#D4A65A]">
@@ -121,22 +121,29 @@ const Profile = () => {
             </div>
 
             {reading.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6">
                 {reading.map(p => (
                   <BookCard key={p._id} book={{ key: p.openLibraryId, title: p.title, author: p.author, coverId: p.coverId }} />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-10 px-4 bg-[#FAF8F5]/50 rounded-2xl border border-dashed border-black/[0.08] flex flex-col items-center">
-                <BookMarked className="w-10 h-10 text-[#D4A65A]/50 mb-3" />
-                <p className="font-serif text-base text-[#1D1D1F] font-medium">No books currently in progress</p>
-                <p className="text-xs text-[#888888] font-sans mt-1">Explore trending titles or search to add books to your reading shelf.</p>
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-14 px-4 bg-gradient-to-b from-[#FAF8F5]/80 to-[#FAF8F5]/40 rounded-[24px] border border-dashed border-black/[0.1] shadow-2xs relative overflow-hidden flex flex-col items-center"
+              >
+                <div className="absolute inset-0 bg-[#D4A65A]/5 blur-2xl opacity-50 pointer-events-none" />
+                <div className="w-16 h-16 rounded-2xl bg-[#D4A65A]/10 border border-[#D4A65A]/20 flex items-center justify-center text-[#D4A65A] mb-4 relative z-10 shadow-sm">
+                  <BookOpen className="w-8 h-8" />
+                </div>
+                <p className="font-serif text-xl text-[#1D1D1F] font-medium relative z-10">No books currently in progress</p>
+                <p className="text-sm text-[#888888] font-sans mt-2 max-w-sm relative z-10">Explore trending titles or search to add books to your reading shelf.</p>
+              </motion.div>
             )}
           </section>
 
           {/* Want to Read */}
-          <section className="bg-white/60 backdrop-blur-md p-6 sm:p-8 rounded-[24px] border border-black/[0.05] shadow-xs">
+          <section className="bg-white/60 backdrop-blur-md p-4 sm:p-6 lg:p-8 rounded-[24px] border border-black/[0.05] shadow-xs">
             <div className="flex items-center justify-between mb-6 pb-3 border-b border-black/[0.06]">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-xl bg-amber-500/15 flex items-center justify-center text-amber-600">
@@ -153,22 +160,29 @@ const Profile = () => {
             </div>
 
             {wantToRead.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6">
                 {wantToRead.map(p => (
                   <BookCard key={p._id} book={{ key: p.openLibraryId, title: p.title, author: p.author, coverId: p.coverId }} />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-10 px-4 bg-[#FAF8F5]/50 rounded-2xl border border-dashed border-black/[0.08] flex flex-col items-center">
-                <Bookmark className="w-10 h-10 text-amber-400/50 mb-3" />
-                <p className="font-serif text-base text-[#1D1D1F] font-medium">Your wishlist is empty</p>
-                <p className="text-xs text-[#888888] font-sans mt-1">Bookmark books from any catalog to save them for later.</p>
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-14 px-4 bg-gradient-to-b from-amber-50/60 to-[#FAF8F5]/40 rounded-[24px] border border-dashed border-amber-600/10 shadow-2xs relative overflow-hidden flex flex-col items-center"
+              >
+                <div className="absolute inset-0 bg-amber-500/5 blur-2xl opacity-50 pointer-events-none" />
+                <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 mb-4 relative z-10 shadow-sm">
+                  <Bookmark className="w-8 h-8" />
+                </div>
+                <p className="font-serif text-xl text-[#1D1D1F] font-medium relative z-10">Your wishlist is empty</p>
+                <p className="text-sm text-[#888888] font-sans mt-2 max-w-sm relative z-10">Bookmark books from any catalog to save them for later.</p>
+              </motion.div>
             )}
           </section>
 
           {/* Completed Books */}
-          <section className="bg-white/60 backdrop-blur-md p-6 sm:p-8 rounded-[24px] border border-black/[0.05] shadow-xs">
+          <section className="bg-white/60 backdrop-blur-md p-4 sm:p-6 lg:p-8 rounded-[24px] border border-black/[0.05] shadow-xs">
             <div className="flex items-center justify-between mb-6 pb-3 border-b border-black/[0.06]">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-600">
@@ -185,17 +199,24 @@ const Profile = () => {
             </div>
 
             {completed.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6">
                 {completed.map(p => (
                   <BookCard key={p._id} book={{ key: p.openLibraryId, title: p.title, author: p.author, coverId: p.coverId }} />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-10 px-4 bg-[#FAF8F5]/50 rounded-2xl border border-dashed border-black/[0.08] flex flex-col items-center">
-                <CheckCircle2 className="w-10 h-10 text-emerald-500/50 mb-3" />
-                <p className="font-serif text-base text-[#1D1D1F] font-medium">No completed books logged yet</p>
-                <p className="text-xs text-[#888888] font-sans mt-1">Mark books as completed as you finish reading.</p>
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-14 px-4 bg-gradient-to-b from-emerald-50/60 to-[#FAF8F5]/40 rounded-[24px] border border-dashed border-emerald-600/10 shadow-2xs relative overflow-hidden flex flex-col items-center"
+              >
+                <div className="absolute inset-0 bg-emerald-500/5 blur-2xl opacity-50 pointer-events-none" />
+                <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 mb-4 relative z-10 shadow-sm">
+                  <Trophy className="w-8 h-8" />
+                </div>
+                <p className="font-serif text-xl text-[#1D1D1F] font-medium relative z-10">No completed books logged yet</p>
+                <p className="text-sm text-[#888888] font-sans mt-2 max-w-sm relative z-10">Mark books as completed as you finish reading.</p>
+              </motion.div>
             )}
           </section>
 

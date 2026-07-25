@@ -235,10 +235,10 @@ const BookDetails = () => {
                       onClick={() => updateProgress.mutate(s)}
                       disabled={updateProgress.isPending}
                       className={clsx(
-                        "px-4 py-2 rounded-full text-xs font-semibold font-sans transition-all shadow-2xs",
+                        "px-4 py-2 rounded-full text-xs font-semibold font-sans transition-all duration-300",
                         status === s 
-                          ? "bg-[#D4A65A] text-white shadow-sm" 
-                          : "bg-[#FAF8F5] hover:bg-white text-[#666666] hover:text-[#1D1D1F] border border-black/[0.06]"
+                          ? "bg-[#1D1D1F] text-[#D4A65A] border border-[#1D1D1F] shadow-[0_4px_12px_rgb(0,0,0,0.1)]" 
+                          : "bg-white hover:bg-[#FAF8F5] text-[#666666] hover:text-[#1D1D1F] border border-black/[0.08] shadow-sm"
                       )}
                     >
                       {s}
@@ -290,8 +290,15 @@ const BookDetails = () => {
 
         </div>
 
+        {/* EDITORIAL DIVIDER */}
+        <div className="py-10 flex items-center justify-center gap-4 opacity-60">
+          <div className="h-px w-full max-w-[100px] bg-gradient-to-r from-transparent to-[#D4A65A]"></div>
+          <div className="w-2 h-2 rotate-45 border border-[#D4A65A]"></div>
+          <div className="h-px w-full max-w-[100px] bg-gradient-to-l from-transparent to-[#D4A65A]"></div>
+        </div>
+
         {/* REVIEWS SECTION */}
-        <div className="pt-10 border-t border-black/[0.08] space-y-8">
+        <div className="space-y-8">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-serif text-3xl font-semibold text-[#1D1D1F]">Community Reviews</h3>
@@ -335,10 +342,16 @@ const BookDetails = () => {
           <div className="space-y-4">
             <AnimatePresence initial={false}>
               {!reviews || reviews.length === 0 ? (
-                <div className="text-center py-12 px-4 bg-white/50 rounded-2xl border border-dashed border-black/[0.08]">
-                  <p className="font-serif text-lg text-[#1D1D1F]">No reviews written yet</p>
-                  <p className="text-xs text-[#888888] font-sans mt-1">Be the first to share your thoughts with the community!</p>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center py-16 px-4 bg-gradient-to-b from-white/60 to-white/30 backdrop-blur-md rounded-[24px] border border-dashed border-black/[0.1] shadow-2xs relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-[#D4A65A]/5 blur-3xl opacity-50" />
+                  <MessageSquare className="w-8 h-8 text-[#D4A65A]/40 mx-auto mb-4 relative z-10" />
+                  <p className="font-serif text-xl text-[#1D1D1F] relative z-10">No reviews written yet</p>
+                  <p className="text-sm text-[#888888] font-sans mt-2 relative z-10">Be the first to share your thoughts with the community!</p>
+                </motion.div>
               ) : (
                 reviews.map((review) => (
                   <motion.div 

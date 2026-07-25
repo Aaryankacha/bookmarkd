@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../contexts/AuthContext';
 import { Plus, Trash2, Layers, Sparkles, Loader2, BookOpen } from 'lucide-react';
@@ -74,8 +75,9 @@ const Lists = () => {
   return (
     <div className="min-h-screen bg-[#F8F6F2] pt-24 pb-16 px-4 sm:px-6 lg:px-12 relative overflow-hidden">
       
-      {/* Background glow */}
-      <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-[#D4A65A]/10 blur-[150px] rounded-full pointer-events-none" />
+      {/* Background Editorial Mesh */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#D4A65A]/15 to-transparent blur-[120px] rounded-full pointer-events-none opacity-70" />
+      <div className="absolute top-40 -left-20 w-[400px] h-[400px] bg-[#E2C799]/15 blur-[100px] rounded-full pointer-events-none opacity-60" />
 
       <div className="max-w-[1200px] mx-auto space-y-10 relative z-10">
         
@@ -161,11 +163,16 @@ const Lists = () => {
         {/* Lists Grid */}
         <div className="space-y-8">
           {lists?.length === 0 ? (
-            <div className="text-center py-16 px-4 bg-white/50 rounded-2xl border border-dashed border-black/[0.08]">
-              <Layers className="w-10 h-10 text-[#D4A65A]/40 mx-auto mb-3" />
-              <p className="font-serif text-lg text-[#1D1D1F]">You haven&apos;t created any lists yet</p>
-              <p className="text-xs text-[#888888] font-sans mt-1">Click &quot;Create List&quot; above to organize your personal reading collections.</p>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20 px-4 bg-gradient-to-b from-white/60 to-white/30 backdrop-blur-md rounded-[28px] border border-dashed border-black/[0.1] shadow-2xs relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-[#D4A65A]/5 blur-3xl opacity-50" />
+              <Layers className="w-10 h-10 text-[#D4A65A]/40 mx-auto mb-4 relative z-10" />
+              <p className="font-serif text-2xl text-[#1D1D1F] relative z-10">You haven&apos;t created any lists yet</p>
+              <p className="text-sm text-[#888888] font-sans mt-2 relative z-10">Click &quot;Create List&quot; above to organize your personal reading collections.</p>
+            </motion.div>
           ) : (
             lists?.map(list => (
               <div key={list._id} className="bg-white/80 backdrop-blur-md rounded-[28px] border border-black/[0.06] p-6 sm:p-8 shadow-2xs space-y-6">

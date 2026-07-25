@@ -73,7 +73,7 @@ const BookRow = ({ title, subtitle, category }) => {
         ) : (
           <div 
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto hide-scrollbar pb-2 snap-x snap-mandatory"
+            className="flex gap-4 md:gap-6 overflow-x-auto hide-scrollbar pb-2 snap-x snap-mandatory"
           >
             {isLoading ? (
               <BookRowSkeleton />

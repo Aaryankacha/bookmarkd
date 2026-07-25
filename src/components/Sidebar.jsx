@@ -36,7 +36,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed left-0 top-0 bottom-0 w-80 bg-[#F8F6F2]/95 backdrop-blur-2xl border-r border-black/[0.08] p-6 z-50 overflow-y-auto hide-scrollbar shadow-2xl"
+            className="fixed left-0 top-0 bottom-0 w-[85vw] max-w-[320px] bg-[#F8F6F2]/95 backdrop-blur-2xl border-r border-black/[0.08] p-5 sm:p-6 z-50 overflow-y-auto hide-scrollbar shadow-2xl"
           >
             <div className="flex items-center justify-between pb-6 mb-6 border-b border-black/[0.08]">
               <div className="flex items-center gap-2.5">

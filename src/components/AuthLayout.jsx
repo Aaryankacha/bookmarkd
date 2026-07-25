@@ -48,7 +48,7 @@ const AuthLayout = ({ children, title, subtitle }) => {
 
             {/* Editorial Headline */}
             <div className="space-y-4 max-w-xl">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1D1D1F] leading-[1.12] tracking-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-[#1D1D1F] leading-[1.12] tracking-tight">
                 Where stories find their <span className="italic font-serif text-[#D4A65A]">home</span> & readers unite.
               </h1>
               <p className="font-sans text-base sm:text-lg text-[#666666] leading-relaxed">
@@ -138,7 +138,7 @@ const AuthLayout = ({ children, title, subtitle }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="w-full max-w-[480px] bg-white/80 backdrop-blur-2xl p-8 sm:p-10 rounded-[24px] border border-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)] text-[#1D1D1F] transition-all">
+            <div className="w-full max-w-[480px] bg-white/80 backdrop-blur-2xl p-6 sm:p-10 rounded-[24px] border border-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)] text-[#1D1D1F] transition-all">
               
               {/* Header */}
               <div className="flex flex-col items-center text-center mb-8">

@@ -74,7 +74,7 @@ const Hero = () => {
         
         {/* LEFT COLUMN (~35% width for typography) */}
         <motion.div 
-          className="lg:col-span-4 xl:col-span-4 flex flex-col justify-center space-y-7 z-10"
+          className="lg:col-span-4 xl:col-span-4 flex flex-col justify-center items-center lg:items-start text-center lg:text-left space-y-6 sm:space-y-7 z-10"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -84,10 +84,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-black/[0.08] shadow-sm w-fit"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-black/[0.08] shadow-sm w-fit mx-auto lg:mx-0"
           >
             <Star className="w-3.5 h-3.5 text-[#D4A65A] fill-[#D4A65A]" />
-            <span className="text-[11px] tracking-wider uppercase font-semibold text-[#7C5C38]">
+            <span className="text-[10px] sm:text-[11px] tracking-wider uppercase font-semibold text-[#7C5C38]">
               A Modern Sanctuary For Readers
             </span>
           </motion.div>
@@ -97,9 +97,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-3"
+            className="space-y-2 sm:space-y-3"
           >
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1D1D1F] leading-[1.12] tracking-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-[#1D1D1F] leading-[1.12] tracking-tight">
               &ldquo;{quoteData.quote}&rdquo;
             </h1>
             <p className="text-[#7C5C38] font-serif italic text-lg sm:text-xl tracking-wide pt-1">
@@ -112,7 +112,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#666666] text-sm sm:text-base leading-relaxed max-w-lg font-sans font-normal"
+            className="text-[#666666] text-sm sm:text-base leading-relaxed max-w-lg font-sans font-normal mx-auto lg:mx-0"
           >
             Bookmarkd helps readers discover books, build beautiful personal libraries, review their favorites, and connect with readers around the world.
           </motion.p>
@@ -122,7 +122,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 w-full sm:w-auto pt-1"
           >
             <button 
               onClick={() => navigate('/search')}
@@ -145,7 +145,7 @@ const Hero = () => {
 
         {/* RIGHT COLUMN (~65% width) - Centered 3D Floating Sculpture */}
         <motion.div 
-          className="lg:col-span-8 xl:col-span-8 relative w-full h-[450px] sm:h-[550px] lg:h-[600px] flex items-center justify-center overflow-hidden"
+          className="lg:col-span-8 xl:col-span-8 relative w-full h-[350px] sm:h-[450px] lg:h-[600px] flex items-center justify-center overflow-hidden"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}

@@ -80,7 +80,7 @@ const Navbar = ({ onOpenDrawer }) => {
         ? 'bg-[#F8F6F2]/80 backdrop-blur-xl border-b border-black/[0.06] shadow-sm' 
         : 'bg-transparent border-b border-transparent'
     }`}>
-      <div className="max-w-[1500px] mx-auto h-full px-6 flex items-center justify-between">
+      <div className="max-w-[1500px] mx-auto h-full px-4 sm:px-6 flex items-center justify-between">
         
         {/* LEFT: HAMBURGER + LOGO */}
         <div className="flex items-center gap-3">
@@ -96,7 +96,7 @@ const Navbar = ({ onOpenDrawer }) => {
             <div className="w-8 h-8 rounded-xl bg-[#D4A65A]/15 border border-[#D4A65A]/30 flex items-center justify-center text-[#D4A65A] group-hover:scale-105 transition-transform">
               <BookMarked className="w-4 h-4 text-[#D4A65A]" />
             </div>
-            <span className="font-serif text-2xl tracking-tight text-[#1D1D1F] font-semibold">
+            <span className="font-serif text-xl sm:text-2xl tracking-tight text-[#1D1D1F] font-semibold">
               Bookmarkd
             </span>
           </Link>
