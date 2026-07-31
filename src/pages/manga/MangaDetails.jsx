@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchAniList, GET_DETAILS } from '../../services/anilist';
+import ErrorState from '../../components/ErrorState';
 import { Loader2, Star, Calendar, BookOpen, Hash, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -22,9 +23,12 @@ const MangaDetails = () => {
 
   if (error || !data?.Media) {
     return (
-      <div className="min-h-screen bg-[#FAF9F6] flex flex-col items-center justify-center pt-16">
-        <h2 className="text-2xl font-serif text-[#1D1D1F]">Failed to load manga details</h2>
-        <Link to="/manga" className="mt-4 text-[#E63946] hover:underline">Return to Manga Home</Link>
+      <div className="min-h-screen bg-[#FAF9F6] flex flex-col items-center justify-center pt-16 px-4">
+        <ErrorState 
+          message="Failed to load manga details. It might not exist or the server is busy." 
+          onRetry={() => window.location.reload()} 
+        />
+        <Link to="/manga" className="mt-4 text-[#E63946] hover:underline font-medium">Return to Manga Home</Link>
       </div>
     );
   }

@@ -15,6 +15,8 @@ export const fetchAniList = async (query, variables = {}) => {
 
   const json = await response.json();
   if (!response.ok || json.errors) {
+    console.error("AniList GraphQL Error:", JSON.stringify(json.errors, null, 2));
+    console.error("AniList GraphQL Data:", json.data);
     throw new Error(json.errors ? json.errors[0].message : 'Failed to fetch from AniList');
   }
 
@@ -58,7 +60,7 @@ const MEDIA_FRAGMENT = `
 // QUERIES
 
 export const GET_TRENDING = `
-  query ($page: Int, $perPage: Int, $countryOfOrigin: String) {
+  query ($page: Int, $perPage: Int, $countryOfOrigin: CountryCode) {
     Page(page: $page, perPage: $perPage) {
       pageInfo {
         total
@@ -75,7 +77,7 @@ export const GET_TRENDING = `
 `;
 
 export const GET_POPULAR = `
-  query ($page: Int, $perPage: Int, $countryOfOrigin: String) {
+  query ($page: Int, $perPage: Int, $countryOfOrigin: CountryCode) {
     Page(page: $page, perPage: $perPage) {
       media(sort: POPULARITY_DESC, type: MANGA, countryOfOrigin: $countryOfOrigin) {
         ${MEDIA_FRAGMENT}
@@ -85,7 +87,7 @@ export const GET_POPULAR = `
 `;
 
 export const GET_BY_GENRE = `
-  query ($page: Int, $perPage: Int, $genre: String, $countryOfOrigin: String) {
+  query ($page: Int, $perPage: Int, $genre: String, $countryOfOrigin: CountryCode) {
     Page(page: $page, perPage: $perPage) {
       media(sort: POPULARITY_DESC, type: MANGA, genre: $genre, countryOfOrigin: $countryOfOrigin) {
         ${MEDIA_FRAGMENT}
@@ -95,7 +97,7 @@ export const GET_BY_GENRE = `
 `;
 
 export const GET_UPDATED = `
-  query ($page: Int, $perPage: Int, $countryOfOrigin: String) {
+  query ($page: Int, $perPage: Int, $countryOfOrigin: CountryCode) {
     Page(page: $page, perPage: $perPage) {
       media(sort: UPDATED_AT_DESC, type: MANGA, countryOfOrigin: $countryOfOrigin) {
         ${MEDIA_FRAGMENT}

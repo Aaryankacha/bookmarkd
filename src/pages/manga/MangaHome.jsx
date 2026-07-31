@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchAniList, GET_TRENDING, GET_POPULAR, GET_UPDATED } from '../../services/anilist';
 import MangaHero from '../../components/manga/MangaHero';
 import MangaCard from '../../components/manga/MangaCard';
+import ErrorState from '../../components/ErrorState';
 import { Loader2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -44,17 +45,17 @@ const MangaCarousel = ({ mangas, isLoading }) => {
 };
 
 const MangaHome = () => {
-  const { data: trending, isLoading: trendingLoading } = useQuery({
+  const { data: trending, isLoading: trendingLoading, error: trendingError, refetch: refetchTrending } = useQuery({
     queryKey: ['manga', 'trending'],
     queryFn: () => fetchAniList(GET_TRENDING, { page: 1, perPage: 10, countryOfOrigin: 'JP' })
   });
 
-  const { data: popular, isLoading: popularLoading } = useQuery({
+  const { data: popular, isLoading: popularLoading, error: popularError, refetch: refetchPopular } = useQuery({
     queryKey: ['manga', 'popular'],
     queryFn: () => fetchAniList(GET_POPULAR, { page: 1, perPage: 10, countryOfOrigin: 'JP' })
   });
 
-  const { data: updated, isLoading: updatedLoading } = useQuery({
+  const { data: updated, isLoading: updatedLoading, error: updatedError, refetch: refetchUpdated } = useQuery({
     queryKey: ['manga', 'updated'],
     queryFn: () => fetchAniList(GET_UPDATED, { page: 1, perPage: 10, countryOfOrigin: 'JP' })
   });
@@ -68,6 +69,21 @@ const MangaHome = () => {
     return (
       <div className="min-h-screen bg-[#FAF9F6] flex items-center justify-center">
         <Loader2 className="w-8 h-8 text-[#E63946] animate-spin" />
+      </div>
+    );
+  }
+
+  if (trendingError || popularError || updatedError) {
+    return (
+      <div className="min-h-screen bg-[#FAF9F6] pt-24">
+        <ErrorState 
+          message="We couldn't fetch the latest manga right now. Please try again."
+          onRetry={() => {
+            refetchTrending();
+            refetchPopular();
+            refetchUpdated();
+          }}
+        />
       </div>
     );
   }
