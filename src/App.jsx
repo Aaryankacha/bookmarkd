@@ -12,6 +12,10 @@ import ClubDetails from './pages/ClubDetails';
 import Lists from './pages/Lists';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MangaHome from './pages/manga/MangaHome';
+import MangaDetails from './pages/manga/MangaDetails';
+import ManhwaHome from './pages/manhwa/ManhwaHome';
+import ManhwaDetails from './pages/manhwa/ManhwaDetails';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
@@ -39,6 +43,11 @@ function App() {
               <Route path="/session/:sessionId" element={<ProtectedRoute><LiveSession /></ProtectedRoute>} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              
+              <Route path="/manga" element={<MangaHome />} />
+              <Route path="/manga/:id" element={<MangaDetails />} />
+              <Route path="/manhwa" element={<ManhwaHome />} />
+              <Route path="/manhwa/:id" element={<ManhwaDetails />} />
               
               <Route path="/profile" element={
                 <ProtectedRoute>

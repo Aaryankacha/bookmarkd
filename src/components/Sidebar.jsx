@@ -13,6 +13,8 @@ const discoverLinks = [
   { name: 'Home Feed', path: '/', icon: Flame },
   { name: 'Discover', path: '/search', icon: Compass },
   { name: 'Book Clubs', path: '/clubs', icon: Users },
+  { name: 'Manga', path: '/manga', icon: Bookmark },
+  { name: 'Manhwa', path: '/manhwa', icon: Flame },
   { name: 'My Library', path: '/profile', icon: Bookmark },
 ];
 

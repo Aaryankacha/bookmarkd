@@ -66,6 +66,8 @@ const Navbar = ({ onOpenDrawer }) => {
     { name: 'Home', path: '/', icon: BookOpen },
     { name: 'Explore', path: '/search', icon: Compass },
     { name: 'Clubs', path: '/clubs', icon: Users },
+    { name: 'Manga', path: '/manga', icon: BookOpen },
+    { name: 'Manhwa', path: '/manhwa', icon: BookOpen },
     ...(user ? [
       { name: 'My Library', path: '/profile', icon: BookMarked },
       { name: 'Lists', path: '/lists', icon: Layers },
