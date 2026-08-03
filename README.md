@@ -20,6 +20,10 @@
 </div>
 
 ---
+🌐 Live Demo: [bookmarkd.ten.vercel.app](https://bookmarkd-ten.vercel.app/)
+
+💻 GitHub Repository: [Bookmarkd Repository](https://github.com/Aaryankacha/bookmarkd)
+
 
 # ✨ Overview
 
@@ -235,7 +239,7 @@ NODE_ENV=development
 ## Clone
 
 ```bash
-git clone https://github.com/yourusername/bookmarkd.git
+git clone https://github.com/aaryankacha/bookmarkd.git
 
 cd bookmarkd
 ```
